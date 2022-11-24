@@ -1,0 +1,380 @@
+GiT commands
+
+Introduction: Like Git is source code  mgmt tool.
+Communication channels : 
+
+watsapp
+facebook
+zoom
+messagenr
+
+IT companies use below communication channels:
+teams
+mail
+skype
+lync
+slack
+sametime -
+
+Various source code mgmt tools:
+Github: https://github.com
+Git hub enterprice:https://ge.wipro.com
+gitlab: https://gitlab.com
+bitbucket: https://bitbucket.org
+
+SVN:sub version
+TFS
+CFN
+
+why source code mgmnt tool?
+
+
+Pre-Requisite Software Download/ Registration:
+Register @ https://github.com/
+Install git bash @ https://git-scm.com/downloads
+
+wat is repository?
+which is a place to store data
+
+
+Create organization=->createteams and repository ->create files
+
+
+Git commands:
+
+When you install Git-bash, the first thing you should be doing is setting up your user
+details as follows only one time.
+
+
+git config --global.username "devops"
+git config --global.email "emaildi"
+
+
+check your settings:
+
+#git config –list
+# git config --global –list
+#git config --global --edit
+
+
+
+Task 1: Create a one repo and push it to github
+
+cd Desktop
+mkdir firstrepo
+cd firstrepo
+git init -(which creates local git empty repository)
+
+Three logical area will get created
+
+working directory->staging directory->Local directory
+
+git status -gives status of untracked files
+
+#################Create some files#################
+
+vi FBloginpage.html
+vi FBlinkpage.xml
+vi FBbackend.java
+
+Git add FBbackend.java ##### To add only one file.java file
+git add *.html ###### which adds all the html files which ending with .html to local repo
+git add . or git add --all (add all files to staging area in local repo)
+
+Git status ##  where you can see as all un tracked files
+############Git status###################################################
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        data.html
+#######################################################################add,status,commit###############################
+
+$ git add --all
+warning: in the working copy of 'data.html', LF will be replaced by CRLF the next time Git touches it
+
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   data.html
+
+
+$ git commit -m "first html file"
+[master (root-commit) 02fc5ba] first html file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 data.html
+
+
+#####################To directly add and commit local repo#############
+git commit -a -m "first commit"
+
+
+
+#############How to create repository directly from remote git hub##########################
+
+Go to git hub -> https:github.com-> right top click on + New repository-> Select Organization-> Name of repository->create it
+
+############To add Remote repository to your local to push your code#############
+git remote add <alias name> <remote URL>
+git remote add myntra-repo "https://github.com/istechworld/myntra.git"
+
+or
+
+git remote add orgin "https://github.com/istechworld/myntra.git"
+
+where : origin is default repo name
+
+#########To see mapping remote repositories##############
+git remote -v
+
+myntra-repo     https://github.com/istechworld/myntra.git (fetch)
+myntra-repo     https://github.com/istechworld/myntra.git (push)
+
+########To Remove mapped remote repositories ##################
+git remote remove myntra-repo
+
+
+###########How to push local repo data to remote repo##############
+where Push is the git command and local repo name and master branch
+
+$ git push myntra-repo master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 231 bytes | 231.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/istechworld/myntra.git
+ * [new branch]      master -> master
+
+
+###########How to check logs#############################
+
+git log   ######Give s all commit iDs
+
+git log -3 #######To see last 3 logs #########
+
+$ git log
+commit 02fc5ba5fa26d971349b0052aa23a7d27b2d6abb (HEAD -> master, myntra-repo/master)
+Author: heshika <test>
+Date:   Thu Nov 24 10:29:47 2022 +0530
+
+    first html file
+#####################
+
+for singlecommit:
+gt show --pretty="" --name-only
+
+###############for multiple commit id###########
+$ git show --pretty="" --name-only 632540284c2d80a
+newfile.xml
+
+##############To remove current working repo file########
+$ git clean -n # To see changes or list the files which are going to be cleaned up
+$ git clean -f
+Removing newfile2.txt
+
+###################To revert back  staging area to working area######################
+
+git reset filename 
+
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        testnew.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add --all
+
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   testnew.java
+
+
+$ git reset testnew.java
+
+$ git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        testnew.java
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+########what is distributed version control system?################
+Each developer having own repository,every developer has its own local repo where they can make chnages and commit it.
+Version control system keeps tarck of version,each developer can revisit and do changes to those versions
+
+#####Difference between DVCS and SVN#############
+where SVN has to directly work on remote repository
+
+DVCs
+1.Dev1 ->Git local repo
+2.Dev2 ->git local repo
+Git is open source distributed vice control system developed by Linus Torvalds in 2005. It emphasis on speed and data integrity
+every user has its local repo
+In git we do not required any Network to perform git operation.
+In git we create only .git directory.
+ 
+SVN:
+
+SVNRepo-> Dev1 and DEv2 and Dev3 
+
+Apache Subversion is an open source software version and revision control system under Apache license.
+In SVN there is central repository has working copy that also make changes and committed in central repository.
+In SVN we required Network for runs the SVN operation. 
+
+##########How to import repositories################
+Right top corner->import repository->source Repo URL->Destination Repo URL -> Import
+
+##########What is git ignore######################
+
+whcih ignores the file being created by some IDes like eclipse,Vscode.so when you do not want to keep it in project and can be ignored
+
+step 1:
+=============
+touch .classpath
+touch .pre
+
+
+step 2:
+=================
+
+add those file to ignore file
+
+
+Branches:
+========================================
+1. Branches are used to work on new feature like,Development,testing,production
+1.Git has default Master branch and in subversion Trunk is a a master branch
+3.https://github.com/istechworld2022/Twitter.git
+ 
+
+Git branch <barnchname> # To create new branch
+git barnch development
+
+git checkout development # To change to development branch
+git checkout -b Test -> Create and shift to Test branch
+
+git add. & git commit -m 
+
+git push origin Test # To push remote directory
+git push origin --all # To push all branches
+
+git diff master development 
+
+git branch -d test ########To dlete Local barnch
+
+git push origin:development # remove remote repository
+
+######To delete branches remotely###############
+Click branchs next to default branch -> delete it
+
+
+Git branch merging:local
+=======================================
+
+git merge Test
+
+Git merge test #######Clear conflicts when it comes and always add and commit changes
+
+
+
+Git tags and diff between branch and tag
+===========================================
+
+Branch is mutable and can be modified
+Tags are immutable and data can not be modified
+after prod deployment,Tags can be created on  Master branch
+Tags are benificial to download source code as zip and work on it during new realses
+Tags can used to identify new releases
+Tags used for reference purpose.
+
+
+git stash
+========================================
+Which is used for backing up current working branch,which is not developed yet and not ready to commit
+Every branch must be developed and tested and then only need to commit it
+
+git stash      #####Takes backs up stores in temporar location########
+git stash list (To list all backup stores)
+git stash apply (To resume or return back to working repo)
+git stash pop stash{1} (To delete stash)
+git stash pop(Single command to apply and delete)
+
+
+git cherry-pick
+=============================
+
+whcih is used to merge particular commit ids or to update some portion of code
+
+git cherry-pick <commitid>
+
+
+git clone
+==========
+git clone <remote repo>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
