@@ -210,6 +210,7 @@ Untracked files:
 
 nothing added to commit but untracked files present (use "git add" to track)
 
+git revert <commit id>
 
 ########what is distributed version control system?################
 Each developer having own repository,every developer has its own local repo where they can make chnages and commit it.
@@ -323,10 +324,96 @@ git cherry-pick <commitid>
 
 git clone
 ==========
+whcih can be used to work on existing project like implementations etc
 git clone <remote repo>
 
 
+step 1. Open new git bash
 
+cd desktop
+
+git clone <github uRL>
+
+
+Difference between git push and git fetch?
+=========================================================
+
+git pull: update remote repo with local working directory
+git fetch : upadte remote repo frm remote to local repo
+
+git pull=git fetch+git merge
+
+when pull and fetch is used.
+
+if your local working local repo,already has updated code.we use git fetch
+
+SSH-key :
+===============================================================
+To craete authentication
+and avoids asking authentication every new push
+
+ssh-keygen
+
+copy public key 
+
+go to github -> settings->ssh and GPG keys -> add it here
+
+ssh -T git@github.com
+
+git remote add ws git@github.com:repo.git
+
+git push
+
+
+----------------------------------------
+
+git PR or Pull request
+
+To integrate code between one branch to another
+
+locally called "merge"
+Remotelly called"Pull request"
+
+Reviewers : are senoiurs who approves the code
+
+===============================
+
+Fork
+
+Getting admin access to any public repo in github
+This can be used,as local
+
+go to  repo and click fork -> add destination repo URL
+
+==========================
+
+Branching startagies
+
+whcih always changes,based on project
+
+1. create barnches ,im-updates,TH-upadtes
+2.DEv-> Test->Prod
+
+===========================================
+Readme file
+
+===========================git best prcatices==================
+
+do not commit half done work
+before commit test it
+write good commit messages
+
+========================================
+
+git rebase
+
+will merge as individual commits
+
+check git log
+
+you can see all individual commit
+
+where as merge will make single commit
 
 
 
